@@ -6,6 +6,6 @@ const schema = mongoose.Schema({
     thumbnail: {type: String, require: true, max:100}
 })
 
-const Productos = Mongoose.model('productos', schema)
+const Productos = mongoose.model('productos', schema)
 
 module.exports = Productos
