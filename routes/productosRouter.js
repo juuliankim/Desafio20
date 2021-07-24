@@ -4,7 +4,7 @@ const controller = require('../api/productos')
 
 router.get('/productos/buscar', async (req, res) => {
     try {
-        let productos = await controlador.buscar(req.query)
+        let productos = await controlador.find(req.query)
         res.send(productos)
     } catch (error) {
         res.status(500).send(error)
@@ -13,7 +13,7 @@ router.get('/productos/buscar', async (req, res) => {
 
 router.post('/productos/guardar', async (req, res)=> {
     try {
-        let productos = await controller.guardar(req.body)
+        let productos = await controller.create(req.body)
         res.json(productos)
     } catch (error) {
         res.status(500).send(error)
@@ -27,7 +27,7 @@ router.put('/productos/actualizar/:id', async (req,res)=> {
             price: req.body.price,
             thumbnail: req.body.thumbnail
         }
-        res.send(controller.actualizar(req.params.id, update))
+        res.send(controller.update(req.params.id, update))
     } catch (error) {
         res.status(500).send(error)
     }
@@ -35,7 +35,7 @@ router.put('/productos/actualizar/:id', async (req,res)=> {
 
 router.delete('/productos/borrar/:id', async (req,res)=> {
     try {
-        await controller.borrar(req.params.id)
+        await controller.remove(req.params.id)
         res.send('El producto se borro con exito')
     } catch (error) {
         res.status(500).send(error)
