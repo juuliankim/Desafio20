@@ -4,7 +4,7 @@ const controller = require('../api/mensajes')
 
 router.post('/mensajes/guardar', async (req, res) => {
     try {
-        let mensaje = await controller.guardar(req.body)
+        let mensaje = await controller.create(req.body)
         res.send(mensaje)
     } catch (error) {
         res.status(500).send(error)
@@ -13,7 +13,7 @@ router.post('/mensajes/guardar', async (req, res) => {
 
 router.get('/mensajes/buscar', async (req, res) => {
     try {
-        let mensajes = await controller.buscar(req.query)
+        let mensajes = await controller.find(req.query)
         console.log(mensajes)
         res.send(mensajes)
     } catch (error) {
